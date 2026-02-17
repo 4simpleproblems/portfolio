@@ -16,6 +16,11 @@
             color: #fff;
             margin: 0;
             overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, span, p, a, button {
+            font-weight: 300 !important;
         }
 
         .fade-in-section {
@@ -78,7 +83,6 @@
         }
 
         .nav-link {
-            font-weight: 300;
             font-size: 0.9rem;
             color: inherit;
             opacity: 0.7;
@@ -95,8 +99,49 @@
             padding: 4px 12px;
             border-radius: 8px;
             font-size: 0.8rem;
-            font-weight: 300;
             color: #ccc;
+            white-space: nowrap;
+        }
+
+        #skills-panel {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 300px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            transform: translateY(120%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        #skills-panel.active {
+            transform: translateY(0);
+        }
+
+        .close-panel {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        .close-panel:hover {
+            opacity: 1;
+        }
+
+        .plus-btn {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .plus-btn:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -104,7 +149,7 @@
 
     <!-- Topbar -->
     <nav class="topbar h-16 flex items-center justify-between px-6 md:px-12">
-        <div class="text-lg font-light tracking-tight">Portfolio</div>
+        <div class="text-lg tracking-tight">Portfolio</div>
         <div class="hidden md:flex items-center gap-8">
             <a href="#hero" class="nav-link">Home</a>
             <a href="#4sp" class="nav-link">4SP</a>
@@ -121,15 +166,15 @@
     <!-- Hero Section -->
     <section id="hero" class="h-screen flex flex-col justify-center items-start text-left px-6 md:px-24 dark-grid-bg">
         <div class="max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-light fade-in-section leading-tight">
-                Hello, my name is <br><span class="font-bold tracking-tighter">##### #######</span>
+            <h1 class="text-5xl md:text-7xl fade-in-section leading-tight">
+                Hello, my name is <br><span class="tracking-tighter">##### #######</span>
             </h1>
-            <p class="mt-8 text-gray-400 text-xl md:text-2xl font-light fade-in-section max-w-2xl" style="transition-delay: 0.2s;">
+            <p class="mt-8 text-gray-400 text-xl md:text-2xl fade-in-section max-w-2xl" style="transition-delay: 0.2s;">
                 I am a developer and designer dedicated to creating tools that empower students and communities. Through open-source initiatives and creative problem-solving, I build digital experiences that matter.
             </p>
             <div class="mt-12 fade-in-section flex flex-wrap gap-4" style="transition-delay: 0.4s;">
-                <a href="#4sp" class="sp4-btn px-10 py-4 text-white font-light">Explore My Work</a>
-                <a href="https://github.com/4simpleproblems" target="_blank" class="px-10 py-4 border border-zinc-800 rounded-[14px] text-white font-light hover:bg-zinc-900 transition-all">View GitHub</a>
+                <a href="#4sp" class="sp4-btn px-10 py-4 text-white">Explore My Work</a>
+                <a href="https://github.com/4simpleproblems" target="_blank" class="px-10 py-4 border border-zinc-800 rounded-[14px] text-white hover:bg-zinc-900 transition-all">View GitHub</a>
             </div>
         </div>
     </section>
@@ -139,39 +184,30 @@
         <div class="max-w-6xl mx-auto w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="fade-in-section">
-                    <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">4SP <br><span class="font-light text-zinc-500 text-3xl md:text-4xl">(4simpleproblems)</span></h2>
-                    <p class="text-gray-400 text-xl font-light leading-relaxed mb-6">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://raw.githubusercontent.com/4SP-Organization/4sp-organization.github.io/main/images/logo.png" alt="4SP Logo" class="w-12 h-12">
+                        <h2 class="text-4xl md:text-6xl tracking-tighter">4SP <span class="text-zinc-500 text-xl md:text-2xl">(4simpleproblems)</span></h2>
+                    </div>
+                    <p class="text-gray-400 text-xl leading-relaxed mb-6">
                         My primary mission. 4SP is more than just a toolkit; it's a movement towards educational freedom. What started as a simple set of scripts has evolved into a comprehensive suite of utilities used by hundreds of students daily. 
                     </p>
-                    <div class="mb-8">
-                        <h4 class="text-white text-lg font-medium mb-4">Core Learnings:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">GitHub</span>
-                            <span class="skill-tag">Firebase</span>
-                            <span class="skill-tag">Vercel</span>
-                            <span class="skill-tag">Dynu</span>
-                            <span class="skill-tag">Surge.sh</span>
-                            <span class="skill-tag">Proxying</span>
+                    <div class="mb-8 overflow-hidden">
+                        <div class="flex items-center gap-2">
                             <span class="skill-tag">HTML</span>
                             <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">Tailwind CSS</span>
-                        </div>
-                        <h4 class="text-white text-sm font-medium mt-4 mb-2 opacity-60">Firebase Deep Dive:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Authentication</span>
-                            <span class="skill-tag">Firestore</span>
-                            <span class="skill-tag">Secrets Management</span>
-                            <span class="skill-tag">Cloud Functions</span>
+                            <span class="skill-tag">Firebase</span>
+                            <div class="plus-btn w-8 h-8 flex items-center justify-center bg-purple-500/20 border border-purple-500/40 rounded-lg text-purple-400" onclick="toggleSkills()">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </div>
                         </div>
                     </div>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-center gap-4 fade-in-section" style="transition-delay: 0.3s;">
                             <div class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
-                            <span class="text-lg font-light">Reached over <span class="text-white font-medium">500+ users</span> globally</span>
+                            <span class="text-lg">Reached over <span class="text-white">500+ users</span> globally</span>
                         </li>
                     </ul>
-                    <a href="https://4sp-organization.github.io" target="_blank" class="sp4-btn px-8 py-3 text-white font-light inline-block">Visit 4SP Organization</a>
+                    <a href="https://4sp-organization.github.io" target="_blank" class="sp4-btn px-8 py-3 text-white inline-block">Visit 4SP Organization</a>
                 </div>
                 <div class="fade-in-section" style="transition-delay: 0.4s;">
                     <div class="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 p-10 round-card shadow-2xl relative overflow-hidden group">
@@ -204,7 +240,7 @@
                     <div class="bg-zinc-900/40 border border-zinc-800 p-10 round-card shadow-2xl relative group">
                         <div class="absolute -top-4 -left-4 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl group-hover:bg-orange-500/20 transition-all"></div>
                         <div class="flex justify-between items-center mb-10">
-                            <div class="text-3xl font-bold tracking-tighter viro-orange">Viro</div>
+                            <div class="text-3xl tracking-tighter viro-orange">Viro</div>
                             <div class="flex gap-3">
                                 <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
                                     <i class="fa-solid fa-basketball text-sm viro-orange"></i>
@@ -214,34 +250,87 @@
                         <div class="space-y-6">
                             <div class="h-4 bg-zinc-800 rounded-full w-3/4"></div>
                             <div class="h-4 bg-zinc-800 rounded-full w-5/6"></div>
-                            <div class="h-14 bg-orange-600 rounded-2xl w-full flex items-center justify-center text-white text-lg font-medium shadow-lg shadow-orange-900/20 hover:scale-[1.02] transition-transform cursor-pointer">
+                            <div class="h-14 bg-orange-600 rounded-2xl w-full flex items-center justify-center text-white text-lg shadow-lg shadow-orange-900/20 hover:scale-[1.02] transition-transform cursor-pointer">
                                 Join the Conversation
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="order-1 lg:order-2 fade-in-section">
-                    <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tighter viro-orange">Viro</h2>
-                    <p class="text-gray-400 text-xl font-light leading-relaxed mb-6">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://raw.githubusercontent.com/4SP-Organization/4sp-organization.github.io/main/images/viro.png" alt="Viro Logo" class="w-12 h-12">
+                        <h2 class="text-4xl md:text-6xl tracking-tighter viro-orange">Viro</h2>
+                    </div>
+                    <p class="text-gray-400 text-xl leading-relaxed mb-6">
                         The ultimate sports hub. Viro was created to fill the gap in real-time, fan-driven sports discussion. It's a platform where passion meets technology, providing a modern space for watch parties and team analysis.
                     </p>
                     <div class="mb-8">
-                        <h4 class="text-white text-lg font-medium mb-4">Advanced Integrations:</h4>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex items-center gap-2">
                             <span class="skill-tag">Stripe</span>
                             <span class="skill-tag">AdSense</span>
-                            <span class="skill-tag">Firebase Storage</span>
-                            <span class="skill-tag opacity-50">+ All 4SP Technologies</span>
+                            <div class="plus-btn w-8 h-8 flex items-center justify-center bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400" onclick="toggleSkills()">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <a href="https://4sp-organization.github.io/viro" target="_blank" class="viro-btn px-10 py-4 font-light inline-block hover:shadow-lg transition-all">Launch Viro</a>
-                        <a href="https://github.com/4simpleproblems/viro" target="_blank" class="px-10 py-4 border border-zinc-800 rounded-full text-gray-400 font-light hover:bg-zinc-900 transition-all">Repository</a>
+                        <a href="https://4sp-organization.github.io/viro" target="_blank" class="viro-btn px-10 py-4 inline-block hover:shadow-lg transition-all">Launch Viro</a>
+                        <a href="https://github.com/4simpleproblems/viro" target="_blank" class="px-10 py-4 border border-zinc-800 rounded-full text-gray-400 hover:bg-zinc-900 transition-all">Repository</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Skills Panel -->
+    <div id="skills-panel">
+        <div class="close-panel" onclick="toggleSkills()">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <h3 class="text-xl mb-6 tracking-tight">Technical Stack</h3>
+        
+        <div class="space-y-6">
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Foundations</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Firebase</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Authentication</span>
+                    <span class="skill-tag">Firestore</span>
+                    <span class="skill-tag">Storage</span>
+                    <span class="skill-tag">Functions</span>
+                    <span class="skill-tag">Secrets</span>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Infrastructure</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">Dynu</span>
+                    <span class="skill-tag">Surge.sh</span>
+                    <span class="skill-tag">Proxying</span>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Integrations</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Stripe</span>
+                    <span class="skill-tag">AdSense</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="py-20 text-center text-gray-500 text-sm border-t border-zinc-900/50">
@@ -249,7 +338,7 @@
             <a href="https://discord.gg/zcADhddGQz" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-discord text-xl"></i></a>
             <a href="https://github.com/4simpleproblems" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
         </div>
-        <p class="font-light tracking-widest uppercase text-[10px]">&copy; 2026 Portfolio / Made with ❤️ from 4SP</p>
+        <p class="tracking-widest uppercase text-[10px]">&copy; 2026 Portfolio / Made with ❤️ from 4SP</p>
     </footer>
 
     <script>
@@ -265,6 +354,10 @@
         document.querySelectorAll('.fade-in-section').forEach(section => {
             observer.observe(section);
         });
+
+        function toggleSkills() {
+            document.getElementById('skills-panel').classList.toggle('active');
+        }
     </script>
 </body>
 </html>
