@@ -281,13 +281,15 @@
                 I am a developer, UI/UX designer and student that is dedicated to creating platforms to entertain students during school for free with the launch of 4SP MAX. I have been creating a new product called 
                 <span class="relative inline-block group/viro">
                     <span class="text-white hover:underline cursor-pointer">Viro</span>,
+                    <!-- Bridge to tooltip -->
+                    <span class="absolute -top-8 left-0 w-full h-8"></span>
                     <!-- Viro Preview Box -->
                     <span onclick="indicatorScroll(event, {getAttribute: () => '#viro'})" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-80 p-5 bg-black border border-white/10 rounded-2xl shadow-2xl opacity-0 pointer-events-none group-hover/viro:opacity-100 group-hover/viro:pointer-events-auto transition-all duration-300 delay-500 group-hover/viro:delay-0 transform translate-y-2 group-hover/viro:translate-y-0 z-50 cursor-pointer">
-                        <span class="flex items-center gap-3 mb-3">
+                        <span class="flex items-center gap-3 mb-3 text-left">
                             <img src="https://raw.githubusercontent.com/4SP-Organization/4sp-organization.github.io/main/images/viro.png" class="w-6 h-6">
                             <span class="text-white text-lg font-medium">Viro</span>
                         </span>
-                        <span class="text-zinc-500 text-sm leading-relaxed block overflow-hidden">
+                        <span class="text-zinc-500 text-sm leading-relaxed block overflow-hidden text-left">
                             Viro is a platform for student athletes to send reactions, send comments, and watch games together with the Team Sessions feature...
                         </span>
                         <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-black border-r border-b border-white/10 rotate-45"></span>
@@ -296,7 +298,7 @@
                 which implements something out of my normal reach, going into Stripe and Adsense for some revenue from my platforms/projects.
             </p>
             <div class="mt-12 fade-in-section flex flex-wrap gap-4" style="transition-delay: 0.4s;">
-                <a href="#4sp" class="sp4-btn px-10 py-4 text-white hover:bg-zinc-900 transition-all border border-zinc-800 rounded-[22px]">View Portfolio</a>
+                <a href="#4sp" onclick="indicatorScroll(event, this)" class="sp4-btn px-10 py-4 text-white hover:bg-zinc-900 transition-all border border-zinc-800 rounded-[22px]">View Portfolio</a>
                 <a href="https://github.com/4simpleproblems" target="_blank" class="px-10 py-4 border border-zinc-800 rounded-[22px] text-white hover:bg-zinc-900 transition-all">View GitHub</a>
             </div>
         </div>
@@ -406,7 +408,6 @@
                 </div>
             </div>
         </div>
-        <div class="section-fade-bottom"></div>
     </section>
 
     <footer id="footer" class="py-20 text-center text-gray-500 text-sm border-t border-zinc-900/50 snap-section">
@@ -570,10 +571,10 @@
         });
 
         function indicatorScroll(e, el) {
-            const href = el.getAttribute('href');
-            if (!href.startsWith('#')) return; // Allow normal link behavior for non-anchor links
+            const href = typeof el === 'string' ? el : el.getAttribute('href');
+            if (!href || !href.startsWith('#')) return; 
             
-            e.preventDefault();
+            if (e) e.preventDefault();
             const targetId = href.replace('#', '');
             if (!targetId) return;
             
