@@ -183,7 +183,7 @@
         }
 
         .scroll-indicator {
-            position: absolute;
+            position: fixed;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -191,8 +191,8 @@
             align-items: center;
             color: #666;
             font-size: 0.75rem;
-            z-index: 20;
-            transition: color 0.3s ease;
+            z-index: 500;
+            transition: all 0.5s ease;
             cursor: pointer;
             text-decoration: none;
         }
@@ -206,7 +206,17 @@
         }
 
         .scroll-indicator.top {
-            top: 32px;
+            top: 80px;
+        }
+
+        .hidden-indicator {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(10px);
+        }
+
+        .hidden-indicator.top {
+            transform: translateX(-50%) translateY(-10px);
         }
 
         section {
@@ -232,6 +242,16 @@
         </div>
     </nav>
 
+    <!-- Fixed Scroll Indicators -->
+    <a id="fixed-scroll-up" href="#" class="scroll-indicator top hidden-indicator">
+        <i class="fa-solid fa-chevron-up mb-2"></i>
+        <span>Scroll Up</span>
+    </a>
+    <a id="fixed-scroll-down" href="#4sp" class="scroll-indicator bottom">
+        <span>Scroll Down</span>
+        <i class="fa-solid fa-chevron-down mt-2"></i>
+    </a>
+
     <!-- Hero Section -->
     <section id="hero" class="h-screen flex flex-col justify-center items-start text-left px-6 md:px-24 dark-grid-bg">
         <div class="max-w-4xl">
@@ -246,20 +266,12 @@
                 <a href="https://github.com/4simpleproblems" target="_blank" class="px-10 py-4 border border-zinc-800 rounded-[22px] text-white hover:bg-zinc-900 transition-all">View GitHub</a>
             </div>
         </div>
-        <a href="#4sp" class="scroll-indicator bottom">
-            <span>Scroll Down</span>
-            <i class="fa-solid fa-chevron-down mt-2"></i>
-        </a>
         <div class="section-fade-bottom"></div>
     </section>
 
     <!-- 4SP Section -->
     <section id="4sp" class="min-h-screen py-32 px-6 md:px-24 flex flex-col justify-center">
         <div class="section-fade-top"></div>
-        <a href="#hero" class="scroll-indicator top">
-            <i class="fa-solid fa-chevron-up mb-2"></i>
-            <span>Scroll Up</span>
-        </a>
         <div class="max-w-6xl mx-auto w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="fade-in-section">
@@ -309,20 +321,12 @@
                 </div>
             </div>
         </div>
-        <a href="#viro" class="scroll-indicator bottom">
-            <span>Scroll Down</span>
-            <i class="fa-solid fa-chevron-down mt-2"></i>
-        </a>
         <div class="section-fade-bottom"></div>
     </section>
 
     <!-- Viro Section -->
     <section id="viro" class="min-h-screen py-32 px-6 md:px-24 flex flex-col justify-center">
         <div class="section-fade-top"></div>
-        <a href="#4sp" class="scroll-indicator top">
-            <i class="fa-solid fa-chevron-up mb-2"></i>
-            <span>Scroll Up</span>
-        </a>
         <div class="max-w-6xl mx-auto w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1 fade-in-section" style="transition-delay: 0.4s;">
@@ -435,7 +439,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-20 text-center text-gray-500 text-sm border-t border-zinc-900/50">
+    <footer id="footer" class="py-20 text-center text-gray-500 text-sm border-t border-zinc-900/50">
         <div class="flex justify-center gap-8 mb-8">
             <a href="https://discord.gg/zcADhddGQz" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-discord text-xl"></i></a>
             <a href="https://github.com/4simpleproblems" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
@@ -456,6 +460,42 @@
         document.querySelectorAll('.fade-in-section').forEach(section => {
             observer.observe(section);
         });
+
+        // Managing Fixed Scroll Indicators
+        const upIndicator = document.getElementById('fixed-scroll-up');
+        const downIndicator = document.getElementById('fixed-scroll-down');
+        const sections = ['hero', '4sp', 'viro', 'footer'];
+
+        function updateScrollIndicators() {
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            let currentSectionIndex = 0;
+
+            sections.forEach((id, index) => {
+                const el = document.getElementById(id);
+                if (el && scrollPos >= el.offsetTop) {
+                    currentSectionIndex = index;
+                }
+            });
+
+            // Handle Up Indicator
+            if (currentSectionIndex > 0) {
+                upIndicator.classList.remove('hidden-indicator');
+                upIndicator.href = '#' + sections[currentSectionIndex - 1];
+            } else {
+                upIndicator.classList.add('hidden-indicator');
+            }
+
+            // Handle Down Indicator
+            if (currentSectionIndex < sections.length - 1) {
+                downIndicator.classList.remove('hidden-indicator');
+                downIndicator.href = '#' + sections[currentSectionIndex + 1];
+            } else {
+                downIndicator.classList.add('hidden-indicator');
+            }
+        }
+
+        window.addEventListener('scroll', updateScrollIndicators);
+        window.addEventListener('load', updateScrollIndicators);
 
         function togglePanel(type) {
             const panel4sp = document.getElementById('panel-4sp');
