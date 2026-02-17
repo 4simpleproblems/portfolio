@@ -278,7 +278,22 @@
                 Hello, my name is <br><span class="tracking-[0.15em]">##### #######</span>
             </h1>
             <p class="mt-8 text-gray-400 text-xl md:text-2xl fade-in-section max-w-2xl" style="transition-delay: 0.2s;">
-                I am a developer, UI/UX designer and student that is dedicated to creating platforms to entertain students during school for free with the launch of 4SP MAX. I have been creating a new product called <span class="inline-flex items-center gap-2 text-white"><img src="https://raw.githubusercontent.com/4SP-Organization/4sp-organization.github.io/main/images/viro.png" class="w-6 h-6"> Viro</span>, which implements something out of my normal reach, going into Stripe and Adsense for some revenue from my platforms/projects.
+                I am a developer, UI/UX designer and student that is dedicated to creating platforms to entertain students during school for free with the launch of 4SP MAX. I have been creating a new product called 
+                <span class="relative inline-block group/viro">
+                    <span class="text-white hover:underline cursor-pointer">Viro</span>,
+                    <!-- Viro Preview Box -->
+                    <span onclick="indicatorScroll(event, {getAttribute: () => '#viro'})" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 p-4 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl opacity-0 pointer-events-none group-hover/viro:opacity-100 group-hover/viro:pointer-events-auto transition-all duration-300 transform translate-y-2 group-hover/viro:translate-y-0 z-50 cursor-pointer">
+                        <span class="flex items-center gap-3 mb-3">
+                            <img src="https://raw.githubusercontent.com/4SP-Organization/4sp-organization.github.io/main/images/viro.png" class="w-8 h-8">
+                            <span class="text-white text-lg font-medium">Viro</span>
+                        </span>
+                        <span class="text-zinc-500 text-sm leading-relaxed block overflow-hidden text-ellipsis whitespace-nowrap">
+                            Viro is a platform for student athletes to send reactions, send comments, and watch games together...
+                        </span>
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-zinc-900 border-r border-b border-zinc-800 rotate-45"></span>
+                    </span>
+                </span>
+                which implements something out of my normal reach, going into Stripe and Adsense for some revenue from my platforms/projects.
             </p>
             <div class="mt-12 fade-in-section flex flex-wrap gap-4" style="transition-delay: 0.4s;">
                 <a href="#4sp" class="sp4-btn px-10 py-4 text-white hover:bg-zinc-900 transition-all border border-zinc-800 rounded-[22px]">View Portfolio</a>
