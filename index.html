@@ -103,32 +103,37 @@
             white-space: nowrap;
         }
 
-        #skills-panel {
+        .skills-panel {
             position: fixed;
             bottom: 24px;
             right: 24px;
-            width: 300px;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
+            width: 320px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 24px;
-            transform: translateY(120%);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
             z-index: 2000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
 
-        #skills-panel.active {
+        .skills-panel.active {
+            opacity: 1;
+            pointer-events: auto;
             transform: translateY(0);
         }
 
         .close-panel {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 16px;
+            right: 16px;
             cursor: pointer;
-            opacity: 0.5;
+            opacity: 0.4;
+            transition: opacity 0.2s ease;
         }
 
         .close-panel:hover {
@@ -137,11 +142,12 @@
 
         .plus-btn {
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .plus-btn:hover {
-            transform: scale(1.1);
+            filter: brightness(1.2);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -191,12 +197,12 @@
                     <p class="text-gray-400 text-xl leading-relaxed mb-6">
                         My primary mission. 4SP is more than just a toolkit; it's a movement towards educational freedom. What started as a simple set of scripts has evolved into a comprehensive suite of utilities used by hundreds of students daily. 
                     </p>
-                    <div class="mb-8 overflow-hidden">
+                    <div class="mb-8">
                         <div class="flex items-center gap-2">
                             <span class="skill-tag">HTML</span>
                             <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">Firebase</span>
-                            <div class="plus-btn w-8 h-8 flex items-center justify-center bg-purple-500/20 border border-purple-500/40 rounded-lg text-purple-400" onclick="toggleSkills()">
+                            <div class="plus-btn w-8 h-8 flex items-center justify-center bg-purple-500/20 border border-purple-500/40 rounded-lg text-purple-400" onclick="togglePanel('4sp')">
                                 <i class="fa-solid fa-plus text-xs"></i>
                             </div>
                         </div>
@@ -268,7 +274,7 @@
                         <div class="flex items-center gap-2">
                             <span class="skill-tag">Stripe</span>
                             <span class="skill-tag">AdSense</span>
-                            <div class="plus-btn w-8 h-8 flex items-center justify-center bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400" onclick="toggleSkills()">
+                            <div class="plus-btn w-8 h-8 flex items-center justify-center bg-orange-500/20 border border-orange-500/40 rounded-lg text-orange-400" onclick="togglePanel('viro')">
                                 <i class="fa-solid fa-plus text-xs"></i>
                             </div>
                         </div>
@@ -282,35 +288,32 @@
         </div>
     </section>
 
-    <!-- Skills Panel -->
-    <div id="skills-panel">
-        <div class="close-panel" onclick="toggleSkills()">
+    <!-- 4SP Skills Panel -->
+    <div id="panel-4sp" class="skills-panel">
+        <div class="close-panel" onclick="togglePanel('4sp')">
             <i class="fa-solid fa-xmark"></i>
         </div>
-        <h3 class="text-xl mb-6 tracking-tight">Technical Stack</h3>
-        
+        <h3 class="text-xl mb-6 tracking-tight">4SP Technical Stack</h3>
         <div class="space-y-6">
             <div>
-                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Foundations</h4>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Core Knowledge</h4>
                 <div class="flex flex-wrap gap-2">
                     <span class="skill-tag">HTML</span>
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">CSS</span>
                     <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">Proxying</span>
                 </div>
             </div>
-            
             <div>
-                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Firebase</h4>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Firebase Ecosystem</h4>
                 <div class="flex flex-wrap gap-2">
                     <span class="skill-tag">Authentication</span>
                     <span class="skill-tag">Firestore</span>
-                    <span class="skill-tag">Storage</span>
-                    <span class="skill-tag">Functions</span>
-                    <span class="skill-tag">Secrets</span>
+                    <span class="skill-tag">Cloud Functions</span>
+                    <span class="skill-tag">Secrets Management</span>
                 </div>
             </div>
-
             <div>
                 <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Infrastructure</h4>
                 <div class="flex flex-wrap gap-2">
@@ -318,15 +321,33 @@
                     <span class="skill-tag">Vercel</span>
                     <span class="skill-tag">Dynu</span>
                     <span class="skill-tag">Surge.sh</span>
-                    <span class="skill-tag">Proxying</span>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <!-- Viro Skills Panel -->
+    <div id="panel-viro" class="skills-panel">
+        <div class="close-panel" onclick="togglePanel('viro')">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <h3 class="text-xl mb-6 tracking-tight viro-orange">Viro Advanced Stack</h3>
+        <div class="space-y-6">
+            <p class="text-sm text-zinc-500">Building on the foundations from 4SP, Viro introduced advanced integration patterns.</p>
             <div>
-                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Integrations</h4>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Financial & Media</h4>
                 <div class="flex flex-wrap gap-2">
                     <span class="skill-tag">Stripe</span>
-                    <span class="skill-tag">AdSense</span>
+                    <span class="skill-tag">Google AdSense</span>
+                    <span class="skill-tag">Firebase Storage</span>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Base Technologies</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Real-time Data</span>
+                    <span class="skill-tag">User Scaling</span>
+                    <span class="skill-tag">UI/UX Design</span>
                 </div>
             </div>
         </div>
@@ -355,8 +376,25 @@
             observer.observe(section);
         });
 
-        function toggleSkills() {
-            document.getElementById('skills-panel').classList.toggle('active');
+        function togglePanel(type) {
+            const panel4sp = document.getElementById('panel-4sp');
+            const panelViro = document.getElementById('panel-viro');
+            
+            if (type === '4sp') {
+                panelViro.classList.remove('active');
+                panel4sp.classList.toggle('active');
+            } else if (type === 'viro') {
+                panel4sp.classList.remove('active');
+                panelViro.classList.toggle('active');
+            }
+        }
+
+        // Close panels when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.skills-panel') && !event.target.closest('.plus-btn')) {
+                document.getElementById('panel-4sp').classList.remove('active');
+                document.getElementById('panel-viro').classList.remove('active');
+            }
         }
     </script>
 </body>
