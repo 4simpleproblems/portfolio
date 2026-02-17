@@ -243,11 +243,11 @@
     </nav>
 
     <!-- Fixed Scroll Indicators -->
-    <a id="fixed-scroll-up" href="#" class="scroll-indicator top hidden-indicator">
+    <a id="fixed-scroll-up" href="#" class="scroll-indicator top hidden-indicator" onclick="indicatorScroll(event, this)">
         <i class="fa-solid fa-chevron-up mb-2"></i>
         <span>Scroll Up</span>
     </a>
-    <a id="fixed-scroll-down" href="#4sp" class="scroll-indicator bottom">
+    <a id="fixed-scroll-down" href="#4sp" class="scroll-indicator bottom" onclick="indicatorScroll(event, this)">
         <span>Scroll Down</span>
         <i class="fa-solid fa-chevron-down mt-2"></i>
     </a>
@@ -519,14 +519,35 @@
 
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
+                // If we were auto-scrolling (from indicator click or snap), 
+                // we don't want to trigger another snap.
                 if (!isAutoScrolling) {
                     snapToSection();
                 }
+                
+                // Always update indicators and restore opacity after scroll stops
                 upIndicator.style.opacity = '';
                 downIndicator.style.opacity = '';
                 updateScrollIndicators();
             }, 150);
         });
+
+        function indicatorScroll(e, el) {
+            e.preventDefault();
+            const targetId = el.getAttribute('href').replace('#', '');
+            if (!targetId) return;
+            
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                isAutoScrolling = true;
+                window.scrollTo({
+                    top: targetEl.offsetTop,
+                    behavior: 'smooth'
+                });
+                // Long enough for smooth scroll to finish
+                setTimeout(() => { isAutoScrolling = false; }, 1000);
+            }
+        }
 
         function snapToSection() {
             const targetId = getMostVisibleSection();
