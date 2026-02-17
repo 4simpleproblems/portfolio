@@ -70,23 +70,28 @@
         }
 
         .tab-btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-            color: rgba(255, 255, 255, 0.5);
+            padding: 1rem 2rem;
+            border-bottom: 3px solid transparent;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
             cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
         }
 
         .tab-btn.active {
-            background: rgba(168, 85, 247, 0.1);
-            border-color: rgba(168, 85, 247, 0.4);
+            border-bottom: 3px solid #a855f7;
+            color: #fff;
+        }
+
+        .tab-btn:hover {
             color: #fff;
         }
 
         .tab-content {
             display: none;
+            text-align: center;
         }
 
         .tab-content.active {
@@ -116,7 +121,7 @@
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12">4SP History</h1>
             
-            <div class="flex flex-wrap gap-4 mb-12">
+            <div class="flex justify-center gap-8 mb-12 border-b border-white/5">
                 <button class="tab-btn active" onclick="showTab('4simpleproblems')">4simpleproblems</button>
                 <button class="tab-btn" onclick="showTab('v5dv')">4SP V5 DV</button>
                 <button class="tab-btn" onclick="showTab('max')">4SP MAX</button>
