@@ -16,7 +16,6 @@
             color: #fff;
             margin: 0;
             overflow-x: hidden;
-            transition: background-color 0.8s ease, color 0.8s ease;
         }
 
         .fade-in-section {
@@ -28,11 +27,6 @@
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .viro-theme {
-            background-color: #fafafa !important;
-            color: #111 !important;
         }
 
         .viro-orange {
@@ -67,11 +61,6 @@
             border-radius: 24px;
         }
 
-        .grid-bg {
-            background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 0);
-            background-size: 22px 22px;
-        }
-
         .dark-grid-bg {
             background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0);
             background-size: 22px 22px;
@@ -86,13 +75,6 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            transition: all 0.5s ease;
-        }
-
-        .viro-theme .topbar {
-            background-color: rgba(250, 250, 250, 0.7);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            color: #111;
         }
 
         .nav-link {
@@ -105,6 +87,16 @@
 
         .nav-link:hover {
             opacity: 1;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: #ccc;
         }
     </style>
 </head>
@@ -148,24 +140,35 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="fade-in-section">
                     <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">4SP <br><span class="font-light text-zinc-500 text-3xl md:text-4xl">(4simpleproblems)</span></h2>
-                    <p class="text-gray-400 text-xl font-light leading-relaxed mb-8">
+                    <p class="text-gray-400 text-xl font-light leading-relaxed mb-6">
                         My primary mission. 4SP is more than just a toolkit; it's a movement towards educational freedom. What started as a simple set of scripts has evolved into a comprehensive suite of utilities used by hundreds of students daily. 
                     </p>
-                    <p class="text-gray-500 text-lg font-light leading-relaxed mb-8">
-                        The project focuses on quality-of-life improvements, bypassing restrictive network filters, and providing access to essential educational resources that are often unfairly blocked. V5 represents the pinnacle of this journey, featuring a modular architecture and a focus on user privacy.
-                    </p>
+                    <div class="mb-8">
+                        <h4 class="text-white text-lg font-medium mb-4">Core Learnings:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">Vercel</span>
+                            <span class="skill-tag">Dynu</span>
+                            <span class="skill-tag">Surge.sh</span>
+                            <span class="skill-tag">Proxying</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                        </div>
+                        <h4 class="text-white text-sm font-medium mt-4 mb-2 opacity-60">Firebase Deep Dive:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Authentication</span>
+                            <span class="skill-tag">Firestore</span>
+                            <span class="skill-tag">Secrets Management</span>
+                            <span class="skill-tag">Cloud Functions</span>
+                        </div>
+                    </div>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-center gap-4 fade-in-section" style="transition-delay: 0.3s;">
                             <div class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
                             <span class="text-lg font-light">Reached over <span class="text-white font-medium">500+ users</span> globally</span>
-                        </li>
-                        <li class="flex items-center gap-4 fade-in-section" style="transition-delay: 0.4s;">
-                            <div class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
-                            <span class="text-lg font-light">Presence in <span class="text-white font-medium">17+ Schools</span> across 8 US States</span>
-                        </li>
-                        <li class="flex items-center gap-4 fade-in-section" style="transition-delay: 0.5s;">
-                            <div class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
-                            <span class="text-lg font-light">International reach spanning the <span class="text-white font-medium">UK and Spain</span></span>
                         </li>
                     </ul>
                     <a href="https://4sp-organization.github.io" target="_blank" class="sp4-btn px-8 py-3 text-white font-light inline-block">Visit 4SP Organization</a>
@@ -194,28 +197,24 @@
     </section>
 
     <!-- Viro Section -->
-    <section id="viro" class="min-h-screen py-32 px-6 md:px-24 flex flex-col justify-center transition-all duration-1000">
+    <section id="viro" class="min-h-screen py-32 px-6 md:px-24 flex flex-col justify-center">
         <div class="max-w-6xl mx-auto w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1 fade-in-section" style="transition-delay: 0.4s;">
-                    <div class="bg-white border border-gray-200 p-10 round-card shadow-2xl grid-bg relative group">
+                    <div class="bg-zinc-900/40 border border-zinc-800 p-10 round-card shadow-2xl relative group">
                         <div class="absolute -top-4 -left-4 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl group-hover:bg-orange-500/20 transition-all"></div>
                         <div class="flex justify-between items-center mb-10">
                             <div class="text-3xl font-bold tracking-tighter viro-orange">Viro</div>
                             <div class="flex gap-3">
-                                <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                                <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
                                     <i class="fa-solid fa-basketball text-sm viro-orange"></i>
-                                </div>
-                                <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-                                    <i class="fa-solid fa-users text-sm text-gray-400"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="space-y-6">
-                            <div class="h-4 bg-gray-100 rounded-full w-3/4"></div>
-                            <div class="h-4 bg-gray-100 rounded-full w-5/6"></div>
-                            <div class="h-4 bg-gray-100 rounded-full w-2/3"></div>
-                            <div class="mt-8 pt-4 h-14 bg-orange-500 rounded-2xl w-full flex items-center justify-center text-white text-lg font-medium shadow-lg shadow-orange-500/20 hover:scale-[1.02] transition-transform cursor-pointer">
+                            <div class="h-4 bg-zinc-800 rounded-full w-3/4"></div>
+                            <div class="h-4 bg-zinc-800 rounded-full w-5/6"></div>
+                            <div class="h-14 bg-orange-600 rounded-2xl w-full flex items-center justify-center text-white text-lg font-medium shadow-lg shadow-orange-900/20 hover:scale-[1.02] transition-transform cursor-pointer">
                                 Join the Conversation
                             </div>
                         </div>
@@ -223,15 +222,21 @@
                 </div>
                 <div class="order-1 lg:order-2 fade-in-section">
                     <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tighter viro-orange">Viro</h2>
-                    <p class="text-gray-600 text-xl font-light leading-relaxed mb-8">
+                    <p class="text-gray-400 text-xl font-light leading-relaxed mb-6">
                         The ultimate sports hub. Viro was created to fill the gap in real-time, fan-driven sports discussion. It's a platform where passion meets technology, providing a modern space for watch parties and team analysis.
                     </p>
-                    <p class="text-gray-500 text-lg font-light leading-relaxed mb-8">
-                        With a focus on speed and community, Viro integrates live score updates with high-performance chat modules. The design language—white, orange, and clean grids—reflects the energy and clarity of the sports world.
-                    </p>
+                    <div class="mb-8">
+                        <h4 class="text-white text-lg font-medium mb-4">Advanced Integrations:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Stripe</span>
+                            <span class="skill-tag">AdSense</span>
+                            <span class="skill-tag">Firebase Storage</span>
+                            <span class="skill-tag opacity-50">+ All 4SP Technologies</span>
+                        </div>
+                    </div>
                     <div class="flex flex-wrap gap-4">
                         <a href="https://4sp-organization.github.io/viro" target="_blank" class="viro-btn px-10 py-4 font-light inline-block hover:shadow-lg transition-all">Launch Viro</a>
-                        <a href="https://github.com/4simpleproblems/viro" target="_blank" class="px-10 py-4 border border-gray-200 rounded-full text-gray-400 font-light hover:bg-gray-50 transition-all">Repository</a>
+                        <a href="https://github.com/4simpleproblems/viro" target="_blank" class="px-10 py-4 border border-zinc-800 rounded-full text-gray-400 font-light hover:bg-zinc-900 transition-all">Repository</a>
                     </div>
                 </div>
             </div>
@@ -248,11 +253,7 @@
     </footer>
 
     <script>
-        // Intersection Observer for Fading Animations
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -264,23 +265,6 @@
         document.querySelectorAll('.fade-in-section').forEach(section => {
             observer.observe(section);
         });
-
-        // Theme Switcher for Viro Section
-        const viroSection = document.getElementById('viro');
-        const themeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const isViroVisible = entry.isIntersecting;
-                if (isViroVisible) {
-                    document.body.classList.add('viro-theme');
-                } else {
-                    if (entry.boundingClientRect.top > 0) {
-                        document.body.classList.remove('viro-theme');
-                    }
-                }
-            });
-        }, { threshold: 0.3 });
-
-        themeObserver.observe(viroSection);
     </script>
 </body>
 </html>
