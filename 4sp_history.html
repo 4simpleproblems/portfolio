@@ -61,22 +61,14 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
 
-        .history-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
         .tab-btn {
-            padding: 1rem 2rem;
+            padding: 1.5rem 3rem;
             border-bottom: 3px solid transparent;
             background: transparent;
             color: rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             letter-spacing: 0.05em;
         }
 
@@ -96,6 +88,34 @@
 
         .tab-content.active {
             display: block;
+        }
+
+        .history-item {
+            margin-bottom: 5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .version-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .release-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .content-text {
+            color: #999;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -118,59 +138,72 @@
     </nav>
 
     <main class="min-h-screen pt-32 px-6 md:px-24 dark-grid-bg">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12">4SP History</h1>
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-7xl font-bold tracking-tighter mb-12 text-center">4SP History</h1>
             
-            <div class="flex justify-center gap-8 mb-12 border-b border-white/5">
+            <div class="flex justify-center gap-12 mb-20 border-b border-white/5">
                 <button class="tab-btn active" onclick="showTab('4simpleproblems')">4simpleproblems</button>
                 <button class="tab-btn" onclick="showTab('v5dv')">4SP V5 DV</button>
                 <button class="tab-btn" onclick="showTab('max')">4SP MAX</button>
             </div>
 
             <!-- 4simpleproblems Tab -->
-            <div id="4simpleproblems" class="tab-content active space-y-8">
-                <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 1</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Placeholder for V1 summary.
+            <div id="4simpleproblems" class="tab-content active">
+                <div class="history-item">
+                    <h2 class="version-title">Version 1</h2>
+                    <p class="release-date">March 13, 2025</p>
+                    <p class="content-text">
+                        The initial release focused on a Soundboard as the primary feature. This version established the foundation for providing student-centric utilities in a professionally styled package.
                     </p>
                 </div>
-                <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 2</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Placeholder for V2 summary.
+                <div class="history-item">
+                    <h2 class="version-title">Version 2</h2>
+                    <p class="release-date">April 11, 2025</p>
+                    <p class="content-text">
+                        V2 expanded the scope significantly, introducing Games, a Proxy system, and a unique interface featuring jumbled iframes to bypass common restrictions.
                     </p>
                 </div>
-                <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 3</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Placeholder for V3 summary.
+                <div class="history-item">
+                    <h2 class="version-title">Version 3</h2>
+                    <p class="release-date">May 11, 2025</p>
+                    <p class="content-text">
+                        A major design overhaul. V3 introduced the refined aesthetic that would define the project's identity, focusing on a cleaner user experience and improved accessibility.
                     </p>
                 </div>
-                <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 4</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Placeholder for V4 summary.
+                <div class="history-item">
+                    <h2 class="version-title">Version 4</h2>
+                    <p class="release-date">August 23, 2025</p>
+                    <p class="content-text">
+                        The "Massive Update." V4 introduced the sidebar navigation and scaled the library to over 1000+ games, marking the largest expansion in the project's history at that point.
                     </p>
                 </div>
             </div>
 
             <!-- 4SP V5 DV Tab -->
-            <div id="v5dv" class="tab-content space-y-8">
-                <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">4SP V5 DV</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Placeholder for V5 DV summary.
+            <div id="v5dv" class="tab-content">
+                <div class="history-item">
+                    <h2 class="version-title">V5 Release</h2>
+                    <p class="release-date">December 3, 2025</p>
+                    <p class="content-text">
+                        The jump to V5 brought a completely modern architecture. Despite initial authentication bugs fixed the following day, it reached 52 users within 24 hours.
+                    </p>
+                </div>
+                <div id="dv-launch" class="history-item">
+                    <h2 class="version-title">DV Launch</h2>
+                    <p class="release-date">January 3, 2026</p>
+                    <p class="content-text">
+                        The DV (Decentralized Version) was released to ensure persistence through local file access, creating an unblockable resource for students across multiple regions.
                     </p>
                 </div>
             </div>
 
             <!-- 4SP MAX Tab -->
-            <div id="max" class="tab-content space-y-8">
-                <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">4SP MAX</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Placeholder for MAX summary.
+            <div id="max" class="tab-content">
+                <div class="history-item">
+                    <h2 class="version-title">MAX Edition</h2>
+                    <p class="release-date">January 2026</p>
+                    <p class="content-text">
+                        The cutting-edge experimental branch. MAX introduced the Velium focus environment, advanced productivity tools, and a refined aesthetic for power users.
                     </p>
                 </div>
             </div>
