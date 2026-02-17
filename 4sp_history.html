@@ -44,8 +44,9 @@
             font-size: 0.85rem;
             color: #fff;
             opacity: 0.7;
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
+            height: 40px;
+            padding: 0 1rem;
+            border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             background: rgba(255, 255, 255, 0.03);
             transition: all 0.3s ease;
@@ -68,9 +69,28 @@
             transition: all 0.3s ease;
         }
 
-        .history-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.05);
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: rgba(168, 85, 247, 0.4);
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -85,7 +105,7 @@
             <a href="index.html#viro" class="nav-btn" title="Viro"><img src="https://raw.githubusercontent.com/4SP-Organization/4sp-organization.github.io/main/images/viro.png" class="w-5 h-5"></a>
             <a href="https://discord.gg/zcADhddGQz" target="_blank" class="nav-btn" title="Discord"><i class="fa-brands fa-discord"></i></a>
             <a href="https://github.com/4simpleproblems" target="_blank" class="nav-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://4sp-organization.github.io" target="_blank" class="nav-btn gap-2" title="Organization"><i class="fa-solid fa-sitemap"></i> Organization</a>
+            <a href="https://4sp-organization.github.io" target="_blank" class="nav-btn gap-2" title="Organization"><img src="https://raw.githubusercontent.com/4SP-Organization/4sp-organization.github.io/main/images/logo.png" class="w-5 h-5"> Organization</a>
         </div>
         <div class="md:hidden">
             <i class="fa-solid fa-bars opacity-70"></i>
@@ -96,25 +116,56 @@
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12">4SP History</h1>
             
-            <div class="space-y-12">
+            <div class="flex flex-wrap gap-4 mb-12">
+                <button class="tab-btn active" onclick="showTab('4simpleproblems')">4simpleproblems</button>
+                <button class="tab-btn" onclick="showTab('v5dv')">4SP V5 DV</button>
+                <button class="tab-btn" onclick="showTab('max')">4SP MAX</button>
+            </div>
+
+            <!-- 4simpleproblems Tab -->
+            <div id="4simpleproblems" class="tab-content active space-y-8">
                 <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">The Beginning</h2>
+                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 1</h2>
                     <p class="text-gray-400 leading-relaxed">
-                        What started as a simple collection of scripts for quality-of-life improvements has evolved into a massive ecosystem serving over 500 users.
+                        Placeholder for V1 summary.
                     </p>
                 </div>
-
                 <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">Evolution to V5</h2>
+                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 2</h2>
                     <p class="text-gray-400 leading-relaxed">
-                        V5 represents the peak of our development, focusing on high-performance games, professional educational tools, and a secure, modular architecture.
+                        Placeholder for V2 summary.
                     </p>
                 </div>
-
                 <div class="history-card">
-                    <h2 class="text-2xl font-light mb-4 text-purple-400">Community Growth</h2>
+                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 3</h2>
                     <p class="text-gray-400 leading-relaxed">
-                        Expanding to 17 schools across 8 states and reaching the UK and Spain, 4SP has become a global student resource.
+                        Placeholder for V3 summary.
+                    </p>
+                </div>
+                <div class="history-card">
+                    <h2 class="text-2xl font-light mb-4 text-purple-400">Version 4</h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        Placeholder for V4 summary.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4SP V5 DV Tab -->
+            <div id="v5dv" class="tab-content space-y-8">
+                <div class="history-card">
+                    <h2 class="text-2xl font-light mb-4 text-purple-400">4SP V5 DV</h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        Placeholder for V5 DV summary.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4SP MAX Tab -->
+            <div id="max" class="tab-content space-y-8">
+                <div class="history-card">
+                    <h2 class="text-2xl font-light mb-4 text-purple-400">4SP MAX</h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        Placeholder for MAX summary.
                     </p>
                 </div>
             </div>
@@ -127,6 +178,19 @@
         </div>
     </main>
 
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
 <!-- Made with ❤️ from 4SP -->
